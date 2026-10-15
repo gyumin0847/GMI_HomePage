@@ -5,19 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GMI 홈페이지</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <!-- ===== 상단 헤더 / 메뉴 ===== -->
   <header class="header" id="header">
-    <div class="header-inner">
+    <div class="util">
+      <div class="inner util-inner">
+        <a href="#">로그인</a>
+        <a href="#">회원가입</a>
+        <a href="#">사이트맵</a>
+      </div>
+    </div>
+
+    <div class="inner header-inner">
       <a href="index.html" class="logo">
-        <!-- 로고 심볼: 나중에 실제 로고 파일이 생기면 <img src="images/logo.svg"> 로 바꾸면 됩니다 -->
+        <!-- 로고 심볼: 실제 로고 파일이 생기면 <img src="images/logo.png" alt="GMI"> 로 바꾸면 됩니다 -->
         <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true">
-          <path d="M20 4c6 6 6 14 0 20-6-6-6-14 0-20z" fill="#2e9c7f" />
-          <path d="M6 30c3-8 10-12 18-10-3 8-10 12-18 10z" fill="#1f6f5c" />
-          <path d="M34 30c-3-8-10-12-18-10 3 8 10 12 18 10z" fill="#8cc9b4" opacity=".9" />
+          <path d="M20 4c6 6 6 14 0 20-6-6-6-14 0-20z" fill="#3aa384" />
+          <path d="M6 30c3-8 10-12 18-10-3 8-10 12-18 10z" fill="#1d5c4d" />
+          <path d="M34 30c-3-8-10-12-18-10 3 8 10 12 18 10z" fill="#9fd3bf" />
         </svg>
         <span class="logo-text">
           <strong>GMI</strong>
@@ -25,7 +33,7 @@
         </span>
       </a>
 
-      <nav class="gnb" id="gnb">
+      <nav class="gnb" id="gnb" aria-label="주 메뉴">
         <ul class="gnb-list">
           <li><a href="#">소개</a>
             <ul class="sub">
@@ -70,46 +78,70 @@
         </ul>
       </nav>
 
-      <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">
+      <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
-    <div class="gnb-bg"></div>
+
+    <!-- 메뉴에 마우스를 올리면 펼쳐지는 흰 배경 + 왼쪽 안내 문구 -->
+    <div class="mega-bg">
+      <div class="inner mega-inner">
+        <div class="mega-intro">
+          <p class="mega-eyebrow">GMI</p>
+          <p class="mega-title">함께하는 공간,<br />함께 자라는 사람들</p>
+        </div>
+      </div>
+    </div>
   </header>
 
   <!-- ===== 메인 슬라이드 =====
        사진을 바꾸려면 images/slides 폴더에 사진을 넣고
-       아래 data-bg 값을 파일 경로로 바꿔주세요. (예: images/slides/photo1.jpg)
-       슬라이드를 더 추가하려면 <div class="slide"> 블록을 복사하면 됩니다. -->
-  <section class="hero" id="hero">
-    <div class="slide active" data-bg="">
-      <div class="slide-text">
-        <p class="eyebrow">WELCOME</p>
+       data-bg 값을 사진 경로로 바꿔주세요. (예: images/slides/photo1.jpg)
+       슬라이드를 추가하려면 <div class="slide"> ... </div> 블록을 복사하면 됩니다. -->
+  <section class="hero" id="hero" aria-label="메인 이미지">
+    <div class="slide active" data-bg="images/slides/sample1.svg">
+      <div class="inner slide-text">
+        <p class="eyebrow">Welcome to GMI</p>
         <h1>함께 만들어가는<br />따뜻한 공동체</h1>
-        <p>여기에 첫 번째 슬라이드 문구를 입력하세요.</p>
+        <p class="lead">이웃과 함께 웃고, 배우고, 성장하는 곳. <br />여기에 첫 번째 슬라이드 문구를 입력하세요.</p>
+        <a href="#" class="btn">기관 소개 보기</a>
       </div>
     </div>
-    <div class="slide" data-bg="">
-      <div class="slide-text">
-        <p class="eyebrow">PROGRAM</p>
-        <h1>모두를 위한<br />다양한 프로그램</h1>
-        <p>여기에 두 번째 슬라이드 문구를 입력하세요.</p>
+    <div class="slide" data-bg="images/slides/sample2.svg">
+      <div class="inner slide-text">
+        <p class="eyebrow">Programs</p>
+        <h1>누구나 참여할 수 있는<br />다양한 프로그램</h1>
+        <p class="lead">아이부터 어르신까지, 모두를 위한 배움과 쉼. <br />여기에 두 번째 슬라이드 문구를 입력하세요.</p>
+        <a href="#" class="btn">프로그램 둘러보기</a>
       </div>
     </div>
-    <div class="slide" data-bg="">
-      <div class="slide-text">
-        <p class="eyebrow">TOGETHER</p>
+    <div class="slide" data-bg="images/slides/sample3.svg">
+      <div class="inner slide-text">
+        <p class="eyebrow">Together</p>
         <h1>내일을 향한<br />작은 발걸음</h1>
-        <p>여기에 세 번째 슬라이드 문구를 입력하세요.</p>
+        <p class="lead">작은 나눔이 모여 큰 변화를 만듭니다. <br />여기에 세 번째 슬라이드 문구를 입력하세요.</p>
+        <a href="#" class="btn">문의하기</a>
       </div>
     </div>
 
-    <button class="hero-arrow prev" id="prevBtn" aria-label="이전">&#10094;</button>
-    <button class="hero-arrow next" id="nextBtn" aria-label="다음">&#10095;</button>
-    <div class="hero-controls">
-      <div class="dots" id="dots"></div>
-      <button class="pause" id="pauseBtn" aria-label="일시정지">&#10073;&#10073;</button>
+    <div class="inner hero-controls">
+      <span class="count"><b id="curNum">01</b> / <span id="totalNum">03</span></span>
+      <div class="progress"><span id="progressBar"></span></div>
+      <div class="ctrl-btns">
+        <button id="prevBtn" aria-label="이전 슬라이드">
+          <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+        <button id="pauseBtn" aria-label="일시정지">
+          <svg class="ic-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12" /></svg>
+          <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" /></svg>
+        </button>
+        <button id="nextBtn" aria-label="다음 슬라이드">
+          <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
+        </button>
+      </div>
     </div>
+
+    <div class="scroll-hint" aria-hidden="true"><span>SCROLL</span><i></i></div>
   </section>
 
   <script src="js/main.js"></script>
