@@ -10,7 +10,6 @@
   --paper: #ffffff;         /* 배경 */
   --font: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --font-en: "Montserrat", var(--font);
-  --util-h: 36px;
   --header-h: 88px;
   --ease: cubic-bezier(.22, .61, .36, 1);
 }
@@ -46,11 +45,6 @@ button { font: inherit; color: inherit; cursor: pointer; border: 0; background: 
 }
 .header.solid, .header.open { background: var(--paper); color: var(--ink); }
 .header.solid::after, .header.open::after { background: var(--line); }
-
-/* 맨 위 작은 메뉴 (로그인 등) */
-.util { height: var(--util-h); font-size: 12px; opacity: .8; }
-.util-inner { height: 100%; display: flex; justify-content: flex-end; align-items: center; gap: 22px; }
-.util a:hover { opacity: .6; }
 
 .header-inner {
   position: relative; z-index: 2; height: var(--header-h);
@@ -103,7 +97,7 @@ button { font: inherit; color: inherit; cursor: pointer; border: 0; background: 
 .header.open .sub { opacity: 1; visibility: visible; transform: none; }
 
 .mega-bg {
-  position: absolute; top: calc(var(--util-h) + var(--header-h)); left: 0; right: 0;
+  position: absolute; top: var(--header-h); left: 0; right: 0;
   height: 0; overflow: hidden; background: var(--paper);
   box-shadow: 0 20px 30px -20px rgba(16, 40, 33, .18);
   transition: height .35s var(--ease);
@@ -319,7 +313,6 @@ a:hover .thumb img { transform: scale(1.06); }
 
 @media (max-width: 1024px) {
   :root { --header-h: 68px; }
-  .util { display: none; }
   .mega-bg { display: none; }
   .menu-btn { display: block; z-index: 3; }
   .logo-mark { width: 38px; height: 38px; }
