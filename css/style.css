@@ -24,14 +24,20 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
   max-width: 1280px; height: var(--header-h); margin: 0 auto; padding: 0 24px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.logo { display: flex; align-items: center; gap: 10px; }
-.logo-mark {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--primary); color: #fff;
-  display: grid; place-items: center; font-weight: 700; font-size: 22px;
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-mark { width: 46px; height: 46px; flex-shrink: 0; transition: transform .4s; }
+.logo:hover .logo-mark { transform: rotate(-8deg) scale(1.05); }
+.logo-text {
+  display: flex; flex-direction: column; justify-content: center;
+  padding-left: 12px; border-left: 1px solid var(--line);
 }
-.logo-text { font-size: 22px; font-weight: 700; color: var(--primary-dark); line-height: 1.1; }
-.logo-text small { display: block; font-size: 12px; font-weight: 400; color: var(--muted); }
+.logo-text strong {
+  font-family: "Montserrat", sans-serif; font-size: 24px; font-weight: 700;
+  letter-spacing: 3px; color: var(--primary-dark); line-height: 1;
+}
+.logo-text small {
+  margin-top: 5px; font-size: 12px; font-weight: 500; letter-spacing: .5px; color: var(--muted);
+}
 
 /* 메인 메뉴 */
 .gnb-list { display: flex; }
