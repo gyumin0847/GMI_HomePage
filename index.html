@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GMI 홈페이지</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ===== 상단 헤더 / 메뉴 ===== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">G</span>
+        <span class="logo-text">GMI<small>기관 이름을 입력하세요</small></span>
+      </a>
+
+      <nav class="gnb" id="gnb">
+        <ul class="gnb-list">
+          <li><a href="#">소개</a>
+            <ul class="sub">
+              <li><a href="#">인사말</a></li>
+              <li><a href="#">설립목적 및 비전</a></li>
+              <li><a href="#">연혁</a></li>
+              <li><a href="#">조직도</a></li>
+              <li><a href="#">오시는 길</a></li>
+            </ul>
+          </li>
+          <li><a href="#">프로그램 소개</a>
+            <ul class="sub">
+              <li><a href="#">프로그램 안내</a></li>
+              <li><a href="#">연간 일정</a></li>
+              <li><a href="#">신청 방법</a></li>
+            </ul>
+          </li>
+          <li><a href="#">공지사항</a>
+            <ul class="sub">
+              <li><a href="#">공지사항</a></li>
+              <li><a href="#">소식</a></li>
+            </ul>
+          </li>
+          <li><a href="#">포토갤러리</a>
+            <ul class="sub">
+              <li><a href="#">활동 사진</a></li>
+              <li><a href="#">행사 사진</a></li>
+            </ul>
+          </li>
+          <li><a href="#">자료</a>
+            <ul class="sub">
+              <li><a href="#">자료실</a></li>
+              <li><a href="#">서식 다운로드</a></li>
+            </ul>
+          </li>
+          <li><a href="#">문의</a>
+            <ul class="sub">
+              <li><a href="#">자주 묻는 질문</a></li>
+              <li><a href="#">문의하기</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="gnb-bg"></div>
+  </header>
+
+  <!-- ===== 메인 슬라이드 =====
+       사진을 바꾸려면 images/slides 폴더에 사진을 넣고
+       아래 data-bg 값을 파일 경로로 바꿔주세요. (예: images/slides/photo1.jpg)
+       슬라이드를 더 추가하려면 <div class="slide"> 블록을 복사하면 됩니다. -->
+  <section class="hero" id="hero">
+    <div class="slide active" data-bg="">
+      <div class="slide-text">
+        <p class="eyebrow">WELCOME</p>
+        <h1>함께 만들어가는<br />따뜻한 공동체</h1>
+        <p>여기에 첫 번째 슬라이드 문구를 입력하세요.</p>
+      </div>
+    </div>
+    <div class="slide" data-bg="">
+      <div class="slide-text">
+        <p class="eyebrow">PROGRAM</p>
+        <h1>모두를 위한<br />다양한 프로그램</h1>
+        <p>여기에 두 번째 슬라이드 문구를 입력하세요.</p>
+      </div>
+    </div>
+    <div class="slide" data-bg="">
+      <div class="slide-text">
+        <p class="eyebrow">TOGETHER</p>
+        <h1>내일을 향한<br />작은 발걸음</h1>
+        <p>여기에 세 번째 슬라이드 문구를 입력하세요.</p>
+      </div>
+    </div>
+
+    <button class="hero-arrow prev" id="prevBtn" aria-label="이전">&#10094;</button>
+    <button class="hero-arrow next" id="nextBtn" aria-label="다음">&#10095;</button>
+    <div class="hero-controls">
+      <div class="dots" id="dots"></div>
+      <button class="pause" id="pauseBtn" aria-label="일시정지">&#10073;&#10073;</button>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
