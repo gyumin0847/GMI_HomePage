@@ -87,11 +87,11 @@
   </header>
 
   <!-- ===== 메인 슬라이드 =====
-       사진을 바꾸려면 images/slides 폴더에 사진을 넣고
-       data-bg 값을 사진 경로로 바꿔주세요. (예: images/slides/photo1.jpg)
+       사진을 바꾸려면 images/photos 폴더에 사진을 넣고
+       data-bg 값을 사진 경로로 바꿔주세요. (예: images/photos/photo1.jpg)
        슬라이드를 추가하려면 <div class="slide"> ... </div> 블록을 복사하면 됩니다. -->
   <section class="hero" id="hero" aria-label="메인 이미지">
-    <div class="slide active" data-bg="images/slides/sample1.svg">
+    <div class="slide active" data-bg="images/photos/hero-cross-valley.jpg">
       <div class="inner slide-text">
         <p class="eyebrow">Welcome to GMI</p>
         <h1>함께 만들어가는<br />따뜻한 공동체</h1>
@@ -99,20 +99,12 @@
         <a href="#" class="btn">기관 소개 보기</a>
       </div>
     </div>
-    <div class="slide" data-bg="images/slides/sample2.svg">
+    <div class="slide" data-bg="images/photos/hero-hands-cross.jpg">
       <div class="inner slide-text">
         <p class="eyebrow">Programs</p>
         <h1>누구나 참여할 수 있는<br />다양한 프로그램</h1>
         <p class="lead">아이부터 어르신까지, 모두를 위한 배움과 쉼. <br />여기에 두 번째 슬라이드 문구를 입력하세요.</p>
         <a href="#" class="btn">프로그램 둘러보기</a>
-      </div>
-    </div>
-    <div class="slide" data-bg="images/slides/sample3.svg">
-      <div class="inner slide-text">
-        <p class="eyebrow">Together</p>
-        <h1>내일을 향한<br />작은 발걸음</h1>
-        <p class="lead">작은 나눔이 모여 큰 변화를 만듭니다. <br />여기에 세 번째 슬라이드 문구를 입력하세요.</p>
-        <a href="#" class="btn">문의하기</a>
       </div>
     </div>
 
@@ -203,17 +195,17 @@
           </div>
           <ul class="gallery-grid">
             <li><a href="#">
-              <div class="thumb"><img src="images/sample/gallery1.svg" alt="" /></div>
-              <p>가을 소풍 나들이</p><time datetime="2026-10-10">2026.10.10</time></a></li>
+              <div class="thumb"><img src="images/photos/gallery-path.jpg" alt="알프스 계곡의 산책길" /></div>
+              <p>순례길 걷기</p><time datetime="2026-10-10">2026.10.10</time></a></li>
             <li><a href="#">
-              <div class="thumb"><img src="images/sample/gallery2.svg" alt="" /></div>
-              <p>추석 맞이 송편 만들기</p><time datetime="2026-09-24">2026.09.24</time></a></li>
+              <div class="thumb"><img src="images/photos/gallery-hands.jpg" alt="손을 모아 만든 십자가" /></div>
+              <p>함께 모은 손</p><time datetime="2026-09-24">2026.09.24</time></a></li>
             <li><a href="#">
-              <div class="thumb"><img src="images/sample/gallery3.svg" alt="" /></div>
-              <p>여름 캠프 현장</p><time datetime="2026-08-12">2026.08.12</time></a></li>
+              <div class="thumb"><img src="images/photos/gallery-cross.jpg" alt="들판 위의 나무 십자가" /></div>
+              <p>들판 위의 십자가</p><time datetime="2026-08-12">2026.08.12</time></a></li>
             <li><a href="#">
-              <div class="thumb"><img src="images/sample/gallery4.svg" alt="" /></div>
-              <p>상반기 수료식</p><time datetime="2026-07-03">2026.07.03</time></a></li>
+              <div class="thumb"><img src="images/photos/gallery-mountains.jpg" alt="눈 덮인 산봉우리" /></div>
+              <p>알프스 수련회</p><time datetime="2026-07-03">2026.07.03</time></a></li>
           </ul>
         </div>
       </div>
@@ -229,28 +221,28 @@
         </div>
         <ul class="program-grid">
           <li><a href="#">
-            <div class="thumb"><img src="images/sample/program1.svg" alt="" /></div>
+            <svg class="p-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2zM4 19a2 2 0 0 0 2 2h12M9 8h5" /></svg>
             <div class="p-body">
               <span class="p-target">아동·청소년</span>
               <h3>방과후 배움교실</h3>
               <p>학습 지도와 다양한 체험 활동으로 아이들의 성장을 돕습니다.</p>
             </div></a></li>
           <li><a href="#">
-            <div class="thumb"><img src="images/sample/program2.svg" alt="" /></div>
+            <svg class="p-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12" /><circle cx="12" cy="12" r="9" /></svg>
             <div class="p-body">
               <span class="p-target">성인</span>
               <h3>평생학습 강좌</h3>
               <p>취미, 교양, 자격증까지 배우고 싶은 것을 함께 배웁니다.</p>
             </div></a></li>
           <li><a href="#">
-            <div class="thumb"><img src="images/sample/program3.svg" alt="" /></div>
+            <svg class="p-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" /></svg>
             <div class="p-body">
               <span class="p-target">어르신</span>
               <h3>건강 행복 교실</h3>
               <p>운동, 노래, 말벗 프로그램으로 건강하고 즐거운 하루를 만듭니다.</p>
             </div></a></li>
           <li><a href="#">
-            <div class="thumb"><img src="images/sample/program4.svg" alt="" /></div>
+            <svg class="p-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3" /><circle cx="17" cy="9" r="2.5" /><path d="M3 20a6 6 0 0 1 12 0M14 20a4.5 4.5 0 0 1 7.5-3.4" /></svg>
             <div class="p-body">
               <span class="p-target">지역 주민</span>
               <h3>나눔과 봉사</h3>

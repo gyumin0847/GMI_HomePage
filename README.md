@@ -7,7 +7,7 @@ HTML / CSS / JavaScript로 만든 정적 홈페이지입니다. 별도 설치 �
 index.html          메인 페이지 (메뉴, 슬라이드)
 css/style.css       디자인 (색상은 맨 위 :root 에서 변경)
 js/main.js          메뉴 동작, 슬라이드 자동 전환
-images/slides/      메인 슬라이드 사진 넣는 곳
+images/photos/      메인 슬라이드 사진 넣는 곳
 ```
 
 ## 내 컴퓨터에서 보고 수정하기
@@ -38,7 +38,7 @@ git clone https://github.com/gyumin0847/GMI_HomePage.git
 | 메뉴 이름, 슬라이드 문구, 기관 이름 | `index.html` | 한글 문구를 찾아서 바로 수정 |
 | 전체 색상, 글꼴 | `css/style.css` | 맨 위 `:root { ... }` |
 | 슬라이드 넘어가는 시간 | `js/main.js` | 맨 위 `SLIDE_INTERVAL` (5000 = 5초) |
-| 슬라이드 사진 | `images/slides/` | 아래 "슬라이드 사진 바꾸기" 참고 |
+| 슬라이드 사진 | `images/photos/` | 아래 "슬라이드 사진 바꾸기" 참고 |
 
 ### 5. 고친 내용을 GitHub에 올리기
 VS Code 왼쪽의 **소스 제어**(가지 모양 아이콘)에서 메시지를 적고 **커밋** → **변경 내용 동기화**를 누르면 됩니다.
@@ -50,10 +50,10 @@ git push
 ```
 
 ## 슬라이드 사진 바꾸기
-1. 사진을 `images/slides/` 폴더에 넣기 (예: `photo1.jpg`)
+1. 사진을 `images/photos/` 폴더에 넣기 (예: `photo1.jpg`)
 2. `index.html`에서 `<div class="slide" data-bg="">` 의 `data-bg` 에 경로 입력
    ```html
-   <div class="slide" data-bg="images/slides/photo1.jpg">
+   <div class="slide" data-bg="images/photos/photo1.jpg">
    ```
 3. 슬라이드 수를 늘리려면 `<div class="slide">...</div>` 블록을 복사
 4. 전환 시간은 `js/main.js` 맨 위 `SLIDE_INTERVAL` 값 변경 (5000 = 5초)

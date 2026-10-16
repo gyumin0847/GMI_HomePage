@@ -280,8 +280,8 @@ a:hover .thumb img { transform: scale(1.06); }
   transition: transform .35s var(--ease), box-shadow .35s var(--ease);
 }
 .program-grid a:hover { transform: translateY(-6px); box-shadow: 0 18px 36px -18px rgba(16, 40, 33, .28); }
-.program-grid .thumb { aspect-ratio: 3 / 2; max-width: 100%; }
-.p-body { padding: 24px 24px 30px; }
+.p-icon { width: 44px; height: 44px; margin: 30px 24px 0; fill: none; stroke: var(--primary); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.p-body { padding: 18px 24px 30px; }
 .p-target { font-size: 13px; font-weight: 500; color: var(--primary-light); }
 .p-body h3 { margin-top: 6px; font-size: 20px; font-weight: 700; }
 .p-body p { margin-top: 10px; font-size: 15px; line-height: 1.65; color: var(--muted); }
@@ -377,7 +377,8 @@ a:hover .thumb img { transform: scale(1.06); }
   .gallery-grid { gap: 20px 12px; }
   .gallery-grid p { font-size: 14px; }
   .program-grid { gap: 12px; }
-  .p-body { padding: 16px 14px 20px; }
+  .p-icon { width: 36px; height: 36px; margin: 20px 14px 0; }
+  .p-body { padding: 12px 14px 20px; }
   .p-body h3 { font-size: 16px; }
   .p-body p { font-size: 13px; }
   .footer-info i { display: block; width: 0; height: 0; margin: 0; }
