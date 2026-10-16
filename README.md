@@ -1,4 +1,4 @@
-# GMI 홈페이지
+# 한동 글로벌 사명원 (GMI) 홈페이지
 
 🔗 https://gmihomepage.vercel.app
 
