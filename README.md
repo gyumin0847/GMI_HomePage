@@ -1,5 +1,7 @@
 # GMI 홈페이지
 
+🔗 https://gmihomepage.vercel.app
+
 HTML / CSS / JavaScript로 만든 정적 홈페이지입니다. 별도 설치 없이 바로 열 수 있어요.
 
 ## 폴더 구조
@@ -61,4 +63,5 @@ git push
 ## 배포 (Vercel)
 GitHub에 코드를 올리면(push) Vercel이 자동으로 홈페이지를 다시 배포합니다. (보통 1분 안에 반영)
 - 처음 한 번만: https://vercel.com 에서 GitHub로 가입 → **Add New → Project** → `GMI_HomePage` **Import** → **Deploy**
-- 배포 상황과 주소는 Vercel 대시보드에서 확인할 수 있어요.
+- 주소: https://gmihomepage.vercel.app
+- 배포 상황은 Vercel 대시보드에서 확인할 수 있어요.
