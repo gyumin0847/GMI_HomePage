@@ -139,7 +139,9 @@ button { font: inherit; color: inherit; cursor: pointer; border: 0; background: 
 /* 글자가 잘 보이도록 왼쪽을 어둡게 */
 .slide::before {
   content: ""; position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(90deg, rgba(10,24,20,.5) 0%, rgba(10,24,20,.14) 50%, rgba(10,24,20,0) 100%);
+  background:
+    linear-gradient(90deg, rgba(10,24,20,.5) 0%, rgba(10,24,20,.14) 50%, rgba(10,24,20,0) 100%),
+    linear-gradient(0deg, rgba(10,24,20,.35) 0%, rgba(10,24,20,0) 55%);
 }
 
 .slide-text { position: relative; z-index: 2; width: 100%; padding-top: 80px; text-shadow: 0 2px 14px rgba(0,0,0,.4); }
@@ -353,6 +355,7 @@ a:hover .thumb img { transform: scale(1.06); }
   .header.mobile-open .menu-btn span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
 
   .slide-text { padding-top: 40px; }
+  .slide::before { background: rgba(10,24,20,.38); }
   .btn { margin-top: 32px; padding: 13px 24px; font-size: 14px; }
   .hero-controls { bottom: 36px; gap: 16px; }
   .progress { width: 90px; }
