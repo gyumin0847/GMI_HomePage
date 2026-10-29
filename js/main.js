@@ -19,11 +19,13 @@ gnb.addEventListener("focusin", () => { if (!isMobile()) header.classList.add("o
 header.addEventListener("focusout", (e) => { if (!header.contains(e.relatedTarget)) header.classList.remove("open"); });
 
 // 모바일: 햄버거 버튼으로 전체 화면 메뉴 열기, 메뉴 누르면 하위 메뉴 펼치기
-menuBtn.addEventListener("click", () => {
-  const open = header.classList.toggle("mobile-open");
+function setMobileMenu(open) {
+  header.classList.toggle("mobile-open", open);
   menuBtn.setAttribute("aria-expanded", open);
+  menuBtn.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
   document.body.style.overflow = open ? "hidden" : "";
-});
+}
+menuBtn.addEventListener("click", () => setMobileMenu(!header.classList.contains("mobile-open")));
 document.querySelectorAll(".gnb-list > li > a").forEach((a) => {
   a.addEventListener("click", (e) => {
     if (!isMobile()) return;
@@ -32,6 +34,21 @@ document.querySelectorAll(".gnb-list > li > a").forEach((a) => {
     document.querySelectorAll(".gnb-list > li.expanded").forEach((x) => { if (x !== li) x.classList.remove("expanded"); });
     li.classList.toggle("expanded");
   });
+});
+// 하위 메뉴를 누르면 메뉴 닫기
+document.querySelectorAll(".sub a").forEach((a) => {
+  a.addEventListener("click", () => { setMobileMenu(false); header.classList.remove("open"); });
+});
+// 모바일 메뉴를 연 채로 화면이 PC 크기가 되면 닫기 (스크롤 잠김 방지)
+window.matchMedia("(max-width: 1024px)").addEventListener("change", (e) => { if (!e.matches) setMobileMenu(false); });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") { setMobileMenu(false); header.classList.remove("open"); }
+});
+
+// 아직 페이지가 없는 링크(href="#")는 눌러도 맨 위로 튀지 않게
+document.addEventListener("click", (e) => {
+  const a = e.target.closest('a[href="#"]');
+  if (a) e.preventDefault();
 });
 
 // ===== 메인 슬라이드 =====

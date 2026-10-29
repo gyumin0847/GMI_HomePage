@@ -16,6 +16,9 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { background: var(--paper); }
+html { scroll-behavior: smooth; }
+/* 메뉴로 이동했을 때 제목이 고정 헤더에 가려지지 않게 */
+#notice, #gallery, #programs { scroll-margin-top: calc(var(--header-h) + 24px); }
 body {
   font-family: var(--font); color: var(--ink);
   letter-spacing: -0.02em; word-break: keep-all;
@@ -84,8 +87,10 @@ button { font: inherit; color: inherit; cursor: pointer; border: 0; background: 
 .sub {
   position: absolute; top: var(--header-h); left: 0; right: 0;
   height: 270px; padding: 34px 0 0; display: flex; flex-direction: column; gap: 4px;
-  opacity: 0; visibility: hidden; transform: translateY(-6px);
-  transition: opacity .3s var(--ease), transform .3s var(--ease), visibility .3s;
+  opacity: 0; visibility: hidden;
+  /* 흰 배경(.mega-bg)과 같은 속도로 위에서부터 펼쳐지게 잘라서, 선이 배경 밖으로 튀어나오지 않게 함 */
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path .35s var(--ease), opacity .2s, visibility 0s .35s;
 }
 .gnb-list > li + li .sub { border-left: 1px solid var(--line); }
 .sub a {
@@ -93,7 +98,10 @@ button { font: inherit; color: inherit; cursor: pointer; border: 0; background: 
   transition: color .2s;
 }
 .sub a:hover { color: var(--primary); font-weight: 500; }
-.header.open .sub { opacity: 1; visibility: visible; transform: none; }
+.header.open .sub {
+  opacity: 1; visibility: visible; clip-path: inset(0);
+  transition: clip-path .35s var(--ease), opacity .3s .1s, visibility 0s;
+}
 
 .mega-bg {
   position: absolute; top: var(--header-h); left: 0; right: 0;
@@ -349,7 +357,7 @@ a:hover .thumb img { transform: scale(1.06); }
   .gnb-list > li:hover > a::after { width: auto; }
   .sub {
     position: static; display: none; height: auto; padding: 0 0 18px 4px;
-    opacity: 1; visibility: visible; transform: none; border: 0 !important;
+    opacity: 1; visibility: visible; clip-path: none; border: 0 !important;
   }
   .gnb-list > li.expanded .sub { display: flex; }
   .sub a { font-size: 16px; }
