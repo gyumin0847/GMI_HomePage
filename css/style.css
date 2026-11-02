@@ -351,47 +351,46 @@ a:hover .thumb img { transform: scale(1.06); }
 
 /* 인사말 */
 .greeting-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; }
-.greeting-head h2 { margin-top: 12px; font-size: clamp(28px, 3vw, 40px); font-weight: 700; letter-spacing: -0.03em; }
 .greeting-quote { margin-top: 32px; padding-left: 18px; border-left: 3px solid var(--primary-light); font-size: 18px; line-height: 1.7; color: var(--primary); font-weight: 500; }
 .greeting-body p { font-size: 17px; line-height: 1.95; color: #3a4541; }
 .greeting-body p + p { margin-top: 22px; }
 .greeting-body .greeting-sign { margin-top: 40px; text-align: right; font-size: 16px; color: var(--ink); }
 .greeting-sign strong { margin-left: 6px; font-size: 20px; letter-spacing: .1em; }
 
-/* GMI 목적 */
+/* 소개 페이지 공통 제목: 왼쪽 제목 + 오른쪽 내용 */
+.about-row { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; }
+.about-title { position: relative; padding-top: 18px; font-size: clamp(26px, 2.6vw, 34px); font-weight: 700; letter-spacing: -0.03em; }
+.about-title::before { content: ""; position: absolute; left: 0; top: 0; width: 28px; height: 3px; background: var(--primary); }
+.about-note { margin-top: 20px; font-size: 15px; line-height: 1.8; color: var(--muted); }
+.about-lead { padding-top: 18px; font-size: 19px; line-height: 1.8; color: #3a4541; }
+.about-lead strong { color: var(--primary); font-weight: 700; }
+
+/* GMI 목적: 번호 목록 */
 .purpose { background: #f3f7f5; }
-.purpose-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; list-style: none; }
-.purpose-grid li {
-  display: flex; flex-direction: column; gap: 18px; padding: 30px 24px 34px;
-  background: var(--paper); border-radius: 10px; border-top: 3px solid var(--primary);
+.purpose-list { counter-reset: p; list-style: none; border-top: 1px solid var(--ink); }
+.purpose-list li {
+  counter-increment: p; display: flex; gap: 28px; align-items: baseline;
+  padding: 24px 4px; border-bottom: 1px solid #d5ddda; font-size: 19px; font-weight: 500; line-height: 1.6;
 }
-.purpose-grid b { font-family: var(--font-en); font-size: 15px; font-weight: 600; color: var(--primary-light); letter-spacing: .1em; }
-.purpose-grid p { font-size: 16px; line-height: 1.7; font-weight: 500; text-wrap: balance; }
-
-/* GMI 활동 */
-.pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.pillar { padding: 36px 32px 40px; border: 1px solid var(--line); border-radius: 12px; }
-.pillar-num { font-family: var(--font-en); font-size: 40px; font-weight: 700; color: #d6e8e1; line-height: 1; }
-.pillar h3 { margin: 18px 0 20px; font-size: 22px; font-weight: 700; color: var(--primary); }
-.pillar li { position: relative; padding-left: 14px; font-size: 15px; line-height: 1.7; color: #3a4541; }
-.pillar li + li { margin-top: 10px; }
-.pillar li::before { content: ""; position: absolute; left: 0; top: .78em; width: 5px; height: 5px; border-radius: 50%; background: var(--primary-light); }
-.pillar small { display: block; font-size: 13px; color: var(--muted); }
-
-.domains {
-  display: flex; align-items: center; gap: 48px; margin-top: 40px; padding: 36px 40px;
-  background: var(--primary); color: #fff; border-radius: 12px;
+.purpose-list li::before {
+  content: counter(p); flex-shrink: 0; width: 22px;
+  font-family: var(--font-en); font-size: 16px; font-weight: 600; color: var(--primary-light);
 }
-.domains-text { flex-shrink: 0; max-width: 360px; }
-.domains h3 { font-size: 20px; font-weight: 700; }
-.domains p { margin-top: 10px; font-size: 15px; line-height: 1.7; opacity: .85; }
-.domain-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1; }
-.domain-list li { padding: 14px 8px; text-align: center; font-size: 16px; font-weight: 500; border: 1px solid rgba(255,255,255,.35); border-radius: 8px; }
+
+/* GMI 활동: 사진 + 글 */
+.act { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; margin-top: 80px; }
+.act--reverse { grid-template-columns: 1fr 1.1fr; }
+.act--reverse figure { order: 2; }
+.act figure img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; }
+.act figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+.act h3 { font-size: 24px; font-weight: 700; }
+.act-text > p { margin-top: 14px; font-size: 16px; line-height: 1.85; color: #3a4541; }
+.act ul { margin-top: 24px; border-top: 1px solid var(--line); }
+.act li { padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.6; color: #3a4541; }
 
 /* 오시는 길 */
 .location { background: #f3f7f5; }
 .location-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: center; }
-.location-info h2 { margin-top: 12px; font-size: clamp(28px, 3vw, 40px); font-weight: 700; letter-spacing: -0.03em; }
 .location-info dl { display: grid; grid-template-columns: 64px 1fr; gap: 14px 16px; margin-top: 32px; font-size: 16px; line-height: 1.6; }
 .location-info dt { font-weight: 700; color: var(--primary); }
 .location-info dd a:hover { text-decoration: underline; }
@@ -474,9 +473,10 @@ a:hover .thumb img { transform: scale(1.06); }
   .sub-tabs a { flex-shrink: 0; padding: 14px 16px; font-size: 15px; }
   .sub-tabs a::after { left: 16px; right: 16px; }
   .greeting-grid { grid-template-columns: 1fr; gap: 32px; }
-  .purpose-grid { grid-template-columns: repeat(2, 1fr); }
-  .pillar-grid { grid-template-columns: 1fr; gap: 16px; }
-  .domains { flex-direction: column; align-items: stretch; gap: 24px; padding: 28px 24px; }
+  .about-row { grid-template-columns: 1fr; gap: 28px; }
+  .act { grid-template-columns: 1fr; gap: 24px; margin-top: 56px; }
+  .act--reverse { grid-template-columns: 1fr; }
+  .act--reverse figure { order: 0; }
   .location-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 
@@ -496,8 +496,8 @@ a:hover .thumb img { transform: scale(1.06); }
   .ctrl-btns button { width: 36px; height: 36px; }
   .greeting-body p { font-size: 16px; }
   .greeting-quote br { display: none; }
-  .purpose-grid { grid-template-columns: 1fr; }
-  .domain-list { grid-template-columns: repeat(2, 1fr); }
+  .purpose-list li { gap: 16px; font-size: 17px; padding: 20px 2px; }
+  .about-lead { font-size: 17px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
