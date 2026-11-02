@@ -51,67 +51,83 @@ document.addEventListener("click", (e) => {
   if (a) e.preventDefault();
 });
 
-// ===== 메인 슬라이드 =====
-const slides = document.querySelectorAll(".slide");
-const curNum = document.getElementById("curNum");
-const bar = document.getElementById("progressBar");
-const pauseBtn = document.getElementById("pauseBtn");
-const pad = (n) => String(n).padStart(2, "0");
-let current = 0;
-let timer = null;
-let playing = true;
-
-document.getElementById("totalNum").textContent = pad(slides.length);
-
-// data-bg에 적힌 사진을 배경으로 넣기
-slides.forEach((slide) => {
-  const bg = document.createElement("div");
-  bg.className = "slide-bg";
-  if (slide.dataset.bg) bg.style.backgroundImage = `url("${slide.dataset.bg}")`;
-  slide.prepend(bg);
-});
-
-function runBar() {
-  bar.style.transition = "none";
-  bar.style.width = "0";
-  if (!playing) return;
-  bar.offsetWidth; // 애니메이션 다시 시작
-  bar.style.transition = `width ${SLIDE_INTERVAL}ms linear`;
-  bar.style.width = "100%";
-}
-
-function goTo(index) {
-  slides[current].classList.remove("active");
-  current = (index + slides.length) % slides.length;
-  slides[current].classList.add("active");
-  curNum.textContent = pad(current + 1);
-  restart();
-}
-
-function restart() {
-  clearTimeout(timer);
-  runBar();
-  if (playing) timer = setTimeout(() => goTo(current + 1), SLIDE_INTERVAL);
-}
-
-document.getElementById("prevBtn").addEventListener("click", () => goTo(current - 1));
-document.getElementById("nextBtn").addEventListener("click", () => goTo(current + 1));
-pauseBtn.addEventListener("click", () => {
-  playing = !playing;
-  pauseBtn.classList.toggle("paused", !playing);
-  pauseBtn.setAttribute("aria-label", playing ? "일시정지" : "재생");
-  restart();
-});
-
-// 휴대폰에서 좌우로 밀어서 넘기기
-let startX = null;
+// ===== 메인 슬라이드 (메인 페이지에만 있음) =====
 const hero = document.getElementById("hero");
-hero.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
-hero.addEventListener("touchend", (e) => {
-  if (startX === null) return;
-  const dx = e.changedTouches[0].clientX - startX;
-  if (Math.abs(dx) > 50) goTo(current + (dx < 0 ? 1 : -1));
-  startX = null;
-});
+if (hero) {
+  const slides = document.querySelectorAll(".slide");
+  const curNum = document.getElementById("curNum");
+  const bar = document.getElementById("progressBar");
+  const pauseBtn = document.getElementById("pauseBtn");
+  const pad = (n) => String(n).padStart(2, "0");
+  let current = 0;
+  let timer = null;
+  let playing = true;
 
-goTo(0);
+  document.getElementById("totalNum").textContent = pad(slides.length);
+
+  // data-bg에 적힌 사진을 배경으로 넣기
+  slides.forEach((slide) => {
+    const bg = document.createElement("div");
+    bg.className = "slide-bg";
+    if (slide.dataset.bg) bg.style.backgroundImage = `url("${slide.dataset.bg}")`;
+    slide.prepend(bg);
+  });
+
+  function runBar() {
+    bar.style.transition = "none";
+    bar.style.width = "0";
+    if (!playing) return;
+    bar.offsetWidth; // 애니메이션 다시 시작
+    bar.style.transition = `width ${SLIDE_INTERVAL}ms linear`;
+    bar.style.width = "100%";
+  }
+
+  function goTo(index) {
+    slides[current].classList.remove("active");
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add("active");
+    curNum.textContent = pad(current + 1);
+    restart();
+  }
+
+  function restart() {
+    clearTimeout(timer);
+    runBar();
+    if (playing) timer = setTimeout(() => goTo(current + 1), SLIDE_INTERVAL);
+  }
+
+  document.getElementById("prevBtn").addEventListener("click", () => goTo(current - 1));
+  document.getElementById("nextBtn").addEventListener("click", () => goTo(current + 1));
+  pauseBtn.addEventListener("click", () => {
+    playing = !playing;
+    pauseBtn.classList.toggle("paused", !playing);
+    pauseBtn.setAttribute("aria-label", playing ? "일시정지" : "재생");
+    restart();
+  });
+
+  // 휴대폰에서 좌우로 밀어서 넘기기
+  let startX = null;
+  hero.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  hero.addEventListener("touchend", (e) => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) goTo(current + (dx < 0 ? 1 : -1));
+    startX = null;
+  });
+
+  goTo(0);
+}
+
+// ===== 소개 페이지 목차 탭: 지금 보고 있는 영역 표시 =====
+const tabLinks = document.querySelectorAll(".sub-tabs a");
+if (tabLinks.length) {
+  const targets = [...tabLinks].map((a) => document.querySelector(a.getAttribute("href")));
+  const markTab = () => {
+    const y = window.scrollY + window.innerHeight * 0.35;
+    let idx = 0;
+    targets.forEach((t, i) => { if (t && t.offsetTop <= y) idx = i; });
+    tabLinks.forEach((a, i) => a.classList.toggle("on", i === idx));
+  };
+  window.addEventListener("scroll", markTab, { passive: true });
+  markTab();
+}

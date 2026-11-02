@@ -7,6 +7,7 @@ HTML / CSS / JavaScript로 만든 정적 홈페이지입니다. 별도 설치 �
 ## 폴더 구조
 ```
 index.html          메인 페이지 (메뉴, 슬라이드)
+about.html          소개 페이지 (인사말, GMI 목적, GMI 활동, 오시는 길)
 css/style.css       디자인 (색상은 맨 위 :root 에서 변경)
 js/main.js          메뉴 동작, 슬라이드 자동 전환
 images/photos/      메인 슬라이드 사진 넣는 곳
@@ -38,6 +39,7 @@ git clone https://github.com/gyumin0847/GMI_HomePage.git
 | 바꾸고 싶은 것 | 파일 | 위치 |
 |---|---|---|
 | 메뉴 이름, 슬라이드 문구, 기관 이름 | `index.html` | 한글 문구를 찾아서 바로 수정 |
+| 인사말, 목적, 활동, 연락처 | `about.html` | 한글 문구를 찾아서 바로 수정 |
 | 전체 색상, 글꼴 | `css/style.css` | 맨 위 `:root { ... }` |
 | 슬라이드 넘어가는 시간 | `js/main.js` | 맨 위 `SLIDE_INTERVAL` (5000 = 5초) |
 | 슬라이드 사진 | `images/photos/` | 아래 "슬라이드 사진 바꾸기" 참고 |
