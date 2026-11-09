@@ -52,26 +52,13 @@ document.addEventListener("click", (e) => {
 });
 
 // ===== 메인 슬라이드 (메인 페이지에만 있음) =====
+// SLIDE_INTERVAL 마다 자동으로 넘어감. PC에서 마우스를 사진 위에 올리면 잠시 멈춤, 휴대폰은 밀어서 넘기기.
 const hero = document.getElementById("hero");
 if (hero) {
   const slides = document.querySelectorAll(".slide");
-  const tabsEl = document.getElementById("heroTabs");
-  const pauseBtn = document.getElementById("pauseBtn");
-  const pad = (n) => String(n).padStart(2, "0");
   let current = 0;
   let timer = null;
-  let playing = true;
-
-  // 슬라이드마다 짧은 선(선택 버튼) 만들기 — 이름은 data-tab (화면엔 안 보이고 읽어주기용)
-  const tabs = [...slides].map((slide, i) => {
-    const li = document.createElement("li");
-    li.innerHTML = `<button type="button"><i class="ht-bar"><b></b></i></button>`;
-    const btn = li.querySelector("button");
-    btn.setAttribute("aria-label", `${i + 1}번 슬라이드: ${slide.dataset.tab || ""}`);
-    btn.addEventListener("click", () => goTo(i));
-    tabsEl.appendChild(li);
-    return btn;
-  });
+  let hovering = false;
 
   // data-bg에 적힌 사진을 배경으로 넣기
   slides.forEach((slide) => {
@@ -81,39 +68,21 @@ if (hero) {
     slide.prepend(bg);
   });
 
-  // 지금 탭의 선이 다음 슬라이드까지 차오름 (일시정지면 꽉 찬 채로 멈춤)
-  function runBar() {
-    tabs.forEach((t) => { const b = t.querySelector(".ht-bar b"); b.style.transition = "none"; b.style.width = "0"; });
-    const bar = tabs[current].querySelector(".ht-bar b");
-    if (!playing) { bar.style.width = "100%"; return; }
-    bar.offsetWidth; // 애니메이션 다시 시작
-    bar.style.transition = `width ${SLIDE_INTERVAL}ms linear`;
-    bar.style.width = "100%";
-  }
-
   function goTo(index) {
     slides[current].classList.remove("active");
     current = (index + slides.length) % slides.length;
     slides[current].classList.add("active");
-    tabs.forEach((t, i) => {
-      t.classList.toggle("on", i === current);
-      t.setAttribute("aria-current", i === current ? "true" : "false");
-    });
     restart();
   }
 
   function restart() {
     clearTimeout(timer);
-    runBar();
-    if (playing) timer = setTimeout(() => goTo(current + 1), SLIDE_INTERVAL);
+    if (!hovering && !document.hidden) timer = setTimeout(() => goTo(current + 1), SLIDE_INTERVAL);
   }
 
-  pauseBtn.addEventListener("click", () => {
-    playing = !playing;
-    pauseBtn.classList.toggle("paused", !playing);
-    pauseBtn.setAttribute("aria-label", playing ? "일시정지" : "재생");
-    restart();
-  });
+  hero.addEventListener("mouseenter", () => { hovering = true; clearTimeout(timer); });
+  hero.addEventListener("mouseleave", () => { hovering = false; restart(); });
+  document.addEventListener("visibilitychange", restart);
 
   // 휴대폰에서 좌우로 밀어서 넘기기
   let startX = null;
