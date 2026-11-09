@@ -181,23 +181,32 @@ button { font: inherit; color: inherit; cursor: pointer; border: 0; background: 
 }
 .lead { margin-top: 24px; font-size: clamp(15px, 1.3vw, 19px); font-weight: 300; line-height: 1.75; opacity: .92; }
 .btn {
-  display: inline-flex; align-items: center; gap: 10px; margin-top: 40px;
-  padding: 15px 30px; border: 1px solid rgba(255,255,255,.7); border-radius: 999px;
-  font-size: 15px; font-weight: 500; transition: background .3s, color .3s, border-color .3s;
+  display: inline-flex; align-items: center; gap: 12px; margin-top: 40px;
+  padding: 16px 30px; border: 1px solid var(--primary-light); border-radius: 999px;
+  background: var(--primary-light); color: #fff; text-shadow: none;
+  font-size: 15px; font-weight: 500; letter-spacing: -0.01em;
+  box-shadow: 0 12px 28px -12px rgba(230, 51, 39, .6);
+  transition: background .3s, color .3s, border-color .3s, box-shadow .3s;
 }
 .btn::after { content: "→"; transition: transform .3s var(--ease); }
-.btn:hover { background: #fff; color: var(--primary); border-color: #fff; }
+.btn:hover { background: #fff; color: var(--primary); border-color: #fff; box-shadow: 0 12px 28px -12px rgba(0, 0, 0, .45); }
 .btn:hover::after { transform: translateX(4px); }
 
 /* 슬라이드 조작 (번호 / 진행바 / 버튼) */
-.hero-controls {
+.hero-nav {
   position: absolute; left: 0; right: 0; bottom: 104px; z-index: 3;
-  display: flex; align-items: center; gap: 22px;
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;
 }
-.count { font-family: var(--font-en); font-size: 14px; letter-spacing: .08em; color: rgba(255,255,255,.65); font-variant-numeric: tabular-nums; }
-.count b { color: #fff; font-weight: 600; }
-.progress { width: 180px; height: 2px; background: rgba(255,255,255,.3); overflow: hidden; }
-.progress span { display: block; width: 0; height: 100%; background: #fff; }
+.hero-tabs { flex: 1; max-width: 920px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; list-style: none; }
+.hero-tabs button {
+  display: block; width: 100%; padding: 0; text-align: left; color: #fff;
+  opacity: .55; transition: opacity .3s;
+}
+.hero-tabs button:hover, .hero-tabs button.on { opacity: 1; }
+.ht-bar { position: relative; display: block; height: 2px; margin-bottom: 14px; background: rgba(255,255,255,.3); overflow: hidden; }
+.ht-bar b { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: #fff; }
+.ht-num { font-family: var(--font-en); font-size: 13px; font-weight: 600; letter-spacing: .08em; }
+.ht-label { display: block; margin-top: 4px; font-size: 15px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 1px 8px rgba(0,0,0,.35); }
 .ctrl-btns { display: flex; gap: 6px; }
 .ctrl-btns button {
   width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
@@ -419,7 +428,7 @@ a:hover .thumb img { transform: scale(1.06); }
 .location-info dt { font-weight: 700; color: var(--primary); }
 .location-info dd a:hover { text-decoration: underline; }
 .map-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
-.btn-line { border-color: var(--primary); color: var(--primary); }
+.btn-line { background: transparent; border-color: var(--primary); color: var(--primary); box-shadow: none; }
 .btn-line:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
 .map { aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: var(--line); }
 .map iframe { display: block; width: 100%; height: 100%; border: 0; }
@@ -518,13 +527,15 @@ a:hover .thumb img { transform: scale(1.06); }
   .slide::before { background: rgba(20,16,15,.38); }
   .slide--busy::before { background: rgba(20,16,15,.6); }
   .btn { margin-top: 32px; padding: 13px 24px; font-size: 14px; }
-  .hero-controls { bottom: 64px; gap: 16px; }
+  .hero-nav { bottom: 64px; gap: 16px; }
+  .hero-tabs { gap: 10px; }
+  .ht-label { display: none; }
+  .ht-bar { margin-bottom: 8px; }
   .quick { margin-top: -36px; }
   .intro-grid { grid-template-columns: 1fr; gap: 48px; }
   .intro-photos { padding: 0 0 48px 40px; }
   .programs-grid { grid-template-columns: 1fr; gap: 40px; }
   .programs-photo img { aspect-ratio: 16 / 10; }
-  .progress { width: 90px; }
   .scroll-hint { display: none; }
 
   .section { padding-block: 72px; }
