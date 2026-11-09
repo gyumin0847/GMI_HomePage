@@ -121,23 +121,14 @@
       </div>
     </div>
 
-    <!-- 슬라이드 선택 탭: 각 slide 의 data-tab 글자가 자동으로 들어갑니다 -->
+    <!-- 슬라이드 표시: 슬라이드 수만큼 짧은 선이 자동으로 생깁니다 (누르면 이동) -->
     <div class="inner hero-nav">
       <ol class="hero-tabs" id="heroTabs" aria-label="슬라이드 선택"></ol>
-      <div class="ctrl-btns">
-        <button id="prevBtn" aria-label="이전 슬라이드">
-          <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg>
-        </button>
-        <button id="pauseBtn" aria-label="일시정지">
-          <svg class="ic-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12" /></svg>
-          <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" /></svg>
-        </button>
-        <button id="nextBtn" aria-label="다음 슬라이드">
-          <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
-        </button>
-      </div>
+      <button class="hero-pause" id="pauseBtn" aria-label="일시정지">
+        <svg class="ic-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12" /></svg>
+        <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" /></svg>
+      </button>
     </div>
-
   </section>
 
   <main>

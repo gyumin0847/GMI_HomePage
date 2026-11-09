@@ -62,10 +62,10 @@ if (hero) {
   let timer = null;
   let playing = true;
 
-  // 슬라이드마다 선택 탭 만들기 (번호 + data-tab 제목 + 진행선)
+  // 슬라이드마다 짧은 선(선택 버튼) 만들기 — 이름은 data-tab (화면엔 안 보이고 읽어주기용)
   const tabs = [...slides].map((slide, i) => {
     const li = document.createElement("li");
-    li.innerHTML = `<button type="button"><i class="ht-bar"><b></b></i><span class="ht-num">${pad(i + 1)}</span><span class="ht-label">${slide.dataset.tab || ""}</span></button>`;
+    li.innerHTML = `<button type="button"><i class="ht-bar"><b></b></i></button>`;
     const btn = li.querySelector("button");
     btn.setAttribute("aria-label", `${i + 1}번 슬라이드: ${slide.dataset.tab || ""}`);
     btn.addEventListener("click", () => goTo(i));
@@ -108,8 +108,6 @@ if (hero) {
     if (playing) timer = setTimeout(() => goTo(current + 1), SLIDE_INTERVAL);
   }
 
-  document.getElementById("prevBtn").addEventListener("click", () => goTo(current - 1));
-  document.getElementById("nextBtn").addEventListener("click", () => goTo(current + 1));
   pauseBtn.addEventListener("click", () => {
     playing = !playing;
     pauseBtn.classList.toggle("paused", !playing);
