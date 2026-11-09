@@ -140,6 +140,12 @@ if (filterLinks.length) {
     const h = location.hash.slice(1);
     const cat = ["field", "school", "forum", "event"].includes(h) ? h : "all";
     albums.forEach((a) => { a.hidden = cat !== "all" && a.dataset.cat !== cat; });
+    // 보이는 앨범이 없는 연도는 제목과 바로가기까지 숨김
+    document.querySelectorAll(".year-group").forEach((g) => {
+      g.hidden = !g.querySelector(".album:not([hidden])");
+      const link = document.querySelector(`.year-nav a[href="#${g.id}"]`);
+      if (link) link.hidden = g.hidden;
+    });
     filterLinks.forEach((l) => l.classList.toggle("on", l.dataset.filter === cat));
   };
   filterLinks.forEach((l) => l.addEventListener("click", (e) => {
@@ -150,6 +156,12 @@ if (filterLinks.length) {
   }));
   window.addEventListener("hashchange", applyFilter);
   applyFilter();
+
+  // 연도 바로가기: 분류 선택은 유지한 채 해당 연도로 이동
+  document.querySelectorAll(".year-nav a").forEach((l) => l.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.querySelector(l.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
+  }));
 }
 
 // ===== 포토갤러리: 사진 크게 보기 =====
@@ -163,7 +175,7 @@ if (lightbox) {
     const a = list[idx];
     lbImg.src = a.getAttribute("href");
     lbImg.alt = a.querySelector("img").alt;
-    lightbox.querySelector(".lb-title").textContent = a.closest(".album").querySelector("h2").textContent;
+    lightbox.querySelector(".lb-title").textContent = a.closest(".album").querySelector("h3").textContent;
     lightbox.querySelector(".lb-cap").textContent = a.dataset.caption || "";
     lightbox.querySelector(".lb-count").textContent = `${idx + 1} / ${list.length}`;
   };

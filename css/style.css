@@ -20,7 +20,7 @@ html { scroll-behavior: smooth; }
 /* 메뉴로 이동했을 때 제목이 고정 헤더에 가려지지 않게 */
 #notice, #gallery, #programs { scroll-margin-top: calc(var(--header-h) + 24px); }
 /* 소개 페이지는 목차 탭 높이만큼 더 띄움 */
-.sub-page main > section[id], .album { scroll-margin-top: calc(var(--header-h) + 64px); }
+.sub-page main > section[id], .album, .year-group { scroll-margin-top: calc(var(--header-h) + 64px); }
 body {
   font-family: var(--font); color: var(--ink);
   letter-spacing: -0.02em; word-break: keep-all;
@@ -405,10 +405,17 @@ a:hover .thumb img { transform: scale(1.06); }
    포토갤러리 페이지
    ========================================================= */
 .gallery-page { padding-top: 72px; }
-.album + .album { margin-top: 88px; }
+.year-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 56px; font-size: 14px; }
+.year-nav span { margin-right: 8px; color: var(--muted); }
+.year-nav a { padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; font-family: var(--font-en); font-weight: 500; transition: border-color .2s, color .2s; }
+.year-nav a:hover { border-color: var(--primary); color: var(--primary); }
+.year-group + .year-group { margin-top: 120px; }
+.year-group[hidden], .year-nav a[hidden] { display: none; }
+.year-title { margin-bottom: 36px; font-family: var(--font-en); font-size: clamp(40px, 5vw, 64px); font-weight: 700; line-height: 1; color: var(--primary); letter-spacing: -0.02em; }
+.album + .album { margin-top: 72px; }
 .album[hidden] { display: none; }
 .album-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; margin-bottom: 20px; border-bottom: 1px solid var(--ink); }
-.album-head h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
+.album-head h3 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
 .album-head p { display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 14px; color: var(--muted); }
 .album-head p > * + *::before { content: "·"; margin: 0 8px; color: #c4ccc9; }
 .album-cat { color: var(--primary); font-weight: 500; }
@@ -534,7 +541,9 @@ a:hover .thumb img { transform: scale(1.06); }
   .greeting-quote br { display: none; }
   .purpose-list li { gap: 16px; font-size: 17px; padding: 20px 2px; }
   .album-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-  .album-head h2 { font-size: 20px; }
+  .album-head h3 { font-size: 20px; }
+  .year-group + .year-group { margin-top: 80px; }
+  .year-nav { margin-bottom: 40px; }
   .lb-prev, .lb-next { top: auto; bottom: 20px; transform: none; width: 44px; height: 44px; }
   .lightbox figure { max-width: 94vw; }
   .about-lead { font-size: 17px; }
