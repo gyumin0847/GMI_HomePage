@@ -20,7 +20,7 @@ html { scroll-behavior: smooth; }
 /* 메뉴로 이동했을 때 제목이 고정 헤더에 가려지지 않게 */
 #notice, #gallery, #programs { scroll-margin-top: calc(var(--header-h) + 24px); }
 /* 소개 페이지는 목차 탭 높이만큼 더 띄움 */
-.sub-page main > section[id] { scroll-margin-top: calc(var(--header-h) + 64px); }
+.sub-page main > section[id], .album { scroll-margin-top: calc(var(--header-h) + 64px); }
 body {
   font-family: var(--font); color: var(--ink);
   letter-spacing: -0.02em; word-break: keep-all;
@@ -400,6 +400,39 @@ a:hover .thumb img { transform: scale(1.06); }
 .map { aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: var(--line); }
 .map iframe { display: block; width: 100%; height: 100%; border: 0; }
 
+
+/* =========================================================
+   포토갤러리 페이지
+   ========================================================= */
+.gallery-page { padding-top: 72px; }
+.album + .album { margin-top: 88px; }
+.album[hidden] { display: none; }
+.album-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; margin-bottom: 20px; border-bottom: 1px solid var(--ink); }
+.album-head h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
+.album-head p { display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 14px; color: var(--muted); }
+.album-head p > * + *::before { content: "·"; margin: 0 8px; color: #c4ccc9; }
+.album-cat { color: var(--primary); font-weight: 500; }
+.album-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.album-grid a { display: block; overflow: hidden; border-radius: 4px; background: var(--line); }
+.album-grid img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .5s var(--ease), opacity .3s; }
+.album-grid a:hover img { transform: scale(1.04); opacity: .92; }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+  background: rgba(8, 14, 12, .94); color: #fff;
+}
+.lightbox[hidden] { display: none; }
+.lightbox figure { max-width: min(1200px, 88vw); }
+.lightbox img { display: block; max-width: 100%; max-height: 80vh; margin: 0 auto; object-fit: contain; }
+.lightbox figcaption { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; margin-top: 14px; font-size: 15px; }
+.lb-cap { opacity: .8; }
+.lb-count { margin-left: auto; font-family: var(--font-en); font-size: 13px; opacity: .6; }
+.lb-close { position: absolute; top: 16px; right: 20px; font-size: 40px; line-height: 1; color: #fff; opacity: .8; }
+.lb-prev, .lb-next { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); }
+.lb-prev { left: 24px; } .lb-next { right: 24px; }
+.lb-prev svg, .lb-next svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 2; }
+.lb-close:hover, .lb-prev:hover, .lb-next:hover { opacity: 1; background: rgba(255,255,255,.08); }
+
 /* =========================================================
    태블릿 / 모바일
    ========================================================= */
@@ -474,6 +507,9 @@ a:hover .thumb img { transform: scale(1.06); }
   .sub-tabs a::after { left: 16px; right: 16px; }
   .greeting-grid { grid-template-columns: 1fr; gap: 32px; }
   .about-row { grid-template-columns: 1fr; gap: 28px; }
+  .album-grid { grid-template-columns: repeat(3, 1fr); }
+  .gallery-page { padding-top: 48px; }
+  .album + .album { margin-top: 64px; }
   .act { grid-template-columns: 1fr; gap: 24px; margin-top: 56px; }
   .act--reverse { grid-template-columns: 1fr; }
   .act--reverse figure { order: 0; }
@@ -497,6 +533,10 @@ a:hover .thumb img { transform: scale(1.06); }
   .greeting-body p { font-size: 16px; }
   .greeting-quote br { display: none; }
   .purpose-list li { gap: 16px; font-size: 17px; padding: 20px 2px; }
+  .album-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .album-head h2 { font-size: 20px; }
+  .lb-prev, .lb-next { top: auto; bottom: 20px; transform: none; width: 44px; height: 44px; }
+  .lightbox figure { max-width: 94vw; }
   .about-lead { font-size: 17px; }
 }
 

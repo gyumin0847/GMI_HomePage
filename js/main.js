@@ -119,7 +119,7 @@ if (hero) {
 }
 
 // ===== 소개 페이지 목차 탭: 지금 보고 있는 영역 표시 =====
-const tabLinks = document.querySelectorAll(".sub-tabs a");
+const tabLinks = document.querySelectorAll(".sub-tabs:not(.gallery-filter) a");
 if (tabLinks.length) {
   const targets = [...tabLinks].map((a) => document.querySelector(a.getAttribute("href")));
   const markTab = () => {
@@ -130,4 +130,67 @@ if (tabLinks.length) {
   };
   window.addEventListener("scroll", markTab, { passive: true });
   markTab();
+}
+
+// ===== 포토갤러리: 분류 탭 =====
+const filterLinks = document.querySelectorAll(".gallery-filter a");
+if (filterLinks.length) {
+  const albums = document.querySelectorAll(".album");
+  const applyFilter = () => {
+    const h = location.hash.slice(1);
+    const cat = ["field", "school", "event"].includes(h) ? h : "all";
+    albums.forEach((a) => { a.hidden = cat !== "all" && a.dataset.cat !== cat; });
+    filterLinks.forEach((l) => l.classList.toggle("on", l.dataset.filter === cat));
+  };
+  filterLinks.forEach((l) => l.addEventListener("click", (e) => {
+    e.preventDefault();
+    history.replaceState(null, "", l.dataset.filter === "all" ? location.pathname : "#" + l.dataset.filter);
+    applyFilter();
+    document.querySelector(".gallery-page").scrollIntoView({ behavior: "smooth" });
+  }));
+  window.addEventListener("hashchange", applyFilter);
+  applyFilter();
+}
+
+// ===== 포토갤러리: 사진 크게 보기 =====
+const lightbox = document.getElementById("lightbox");
+if (lightbox) {
+  const lbImg = lightbox.querySelector("img");
+  let list = [];
+  let idx = 0;
+  const show = (i) => {
+    idx = (i + list.length) % list.length;
+    const a = list[idx];
+    lbImg.src = a.getAttribute("href");
+    lbImg.alt = a.querySelector("img").alt;
+    lightbox.querySelector(".lb-title").textContent = a.closest(".album").querySelector("h2").textContent;
+    lightbox.querySelector(".lb-cap").textContent = a.dataset.caption || "";
+    lightbox.querySelector(".lb-count").textContent = `${idx + 1} / ${list.length}`;
+  };
+  const close = () => { lightbox.hidden = true; document.body.style.overflow = ""; lbImg.src = ""; };
+  document.querySelectorAll(".album-grid a").forEach((a) => a.addEventListener("click", (e) => {
+    e.preventDefault();
+    list = [...a.closest(".album-grid").querySelectorAll("a")];
+    show(list.indexOf(a));
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+  }));
+  lightbox.querySelector(".lb-close").addEventListener("click", close);
+  lightbox.querySelector(".lb-prev").addEventListener("click", () => show(idx - 1));
+  lightbox.querySelector(".lb-next").addEventListener("click", () => show(idx + 1));
+  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) close(); });
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.hidden) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") show(idx - 1);
+    if (e.key === "ArrowRight") show(idx + 1);
+  });
+  let sx = null;
+  lightbox.addEventListener("touchstart", (e) => { sx = e.touches[0].clientX; }, { passive: true });
+  lightbox.addEventListener("touchend", (e) => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+    sx = null;
+  });
 }
