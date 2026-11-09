@@ -52,13 +52,12 @@ document.addEventListener("click", (e) => {
 });
 
 // ===== 메인 슬라이드 (메인 페이지에만 있음) =====
-// SLIDE_INTERVAL 마다 자동으로 넘어감. PC에서 마우스를 사진 위에 올리면 잠시 멈춤, 휴대폰은 밀어서 넘기기.
+// SLIDE_INTERVAL 마다 자동으로 넘어감. 휴대폰은 밀어서 넘기기도 가능.
 const hero = document.getElementById("hero");
 if (hero) {
   const slides = document.querySelectorAll(".slide");
   let current = 0;
   let timer = null;
-  let hovering = false;
 
   // data-bg에 적힌 사진을 배경으로 넣기
   slides.forEach((slide) => {
@@ -77,11 +76,9 @@ if (hero) {
 
   function restart() {
     clearTimeout(timer);
-    if (!hovering && !document.hidden) timer = setTimeout(() => goTo(current + 1), SLIDE_INTERVAL);
+    if (!document.hidden) timer = setTimeout(() => goTo(current + 1), SLIDE_INTERVAL);
   }
 
-  hero.addEventListener("mouseenter", () => { hovering = true; clearTimeout(timer); });
-  hero.addEventListener("mouseleave", () => { hovering = false; restart(); });
   document.addEventListener("visibilitychange", restart);
 
   // 휴대폰에서 좌우로 밀어서 넘기기
