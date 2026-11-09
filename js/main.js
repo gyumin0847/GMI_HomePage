@@ -138,7 +138,7 @@ if (filterLinks.length) {
   const albums = document.querySelectorAll(".album");
   const applyFilter = () => {
     const h = location.hash.slice(1);
-    const cat = ["field", "school", "event"].includes(h) ? h : "all";
+    const cat = ["field", "school", "forum", "event"].includes(h) ? h : "all";
     albums.forEach((a) => { a.hidden = cat !== "all" && a.dataset.cat !== cat; });
     filterLinks.forEach((l) => l.classList.toggle("on", l.dataset.filter === cat));
   };
