@@ -20,7 +20,7 @@
 html, body { background: var(--paper); }
 html { scroll-behavior: smooth; }
 /* 메뉴로 이동했을 때 제목이 고정 헤더에 가려지지 않게 */
-#notice, #gallery, #programs { scroll-margin-top: calc(var(--header-h) + 24px); }
+#notice, #gallery { scroll-margin-top: calc(var(--header-h) + 24px); }
 /* 소개 페이지는 목차 탭 높이만큼 더 띄움 */
 .sub-page main > section[id], .album, .year-group { scroll-margin-top: calc(var(--header-h) + 64px); }
 body {
@@ -263,21 +263,6 @@ a:hover .thumb img { transform: scale(1.06); }
 /* =========================================================
    3. 프로그램 소개
    ========================================================= */
-.programs { background: var(--soft); }
-.programs-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 72px; align-items: center; }
-.programs-photo img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px; }
-.programs-desc { margin-top: 16px; font-size: 16px; color: var(--muted); }
-.program-list { list-style: none; counter-reset: pg; margin-top: 36px; border-top: 1px solid var(--ink); }
-.program-list li { counter-increment: pg; border-bottom: 1px solid #dedad5; }
-.program-list a { position: relative; display: block; padding: 24px 48px 24px 52px; transition: background .2s; }
-.program-list a::before { content: "0" counter(pg); position: absolute; left: 4px; top: 26px; font-family: var(--font-en); font-size: 15px; font-weight: 600; color: var(--primary-light); }
-.program-list a::after { content: "→"; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); transition: transform .3s var(--ease), color .2s; }
-.program-list a:hover { background: rgba(255,255,255,.7); }
-.program-list a:hover::after { transform: translate(4px, -50%); color: var(--primary); }
-.p-target { font-size: 13px; font-weight: 500; color: var(--primary); }
-.program-list h3 { margin-top: 4px; font-size: 20px; font-weight: 700; }
-.program-list p { margin-top: 6px; font-size: 15px; line-height: 1.65; color: var(--muted); }
-
 /* 메인 소개 */
 .intro { padding-bottom: 40px; }
 .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -434,6 +419,28 @@ a:hover .thumb img { transform: scale(1.06); }
 .lb-prev svg, .lb-next svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 2; }
 .lb-close:hover, .lb-prev:hover, .lb-next:hover { opacity: 1; background: rgba(255,255,255,.08); }
 
+
+/* =========================================================
+   프로그램 소개 페이지
+   ========================================================= */
+.prog-soft { background: var(--soft); }
+.prog-photo { margin-top: 48px; }
+.prog-photo img { display: block; width: 100%; aspect-ratio: 21 / 8; object-fit: cover; border-radius: 6px; }
+.prog-photo figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+.prog-list { margin-top: 48px; border-top: 1px solid var(--ink); }
+.prog { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; padding: 36px 0; border-bottom: 1px solid #dedad5; scroll-margin-top: calc(var(--header-h) + 72px); }
+.prog-name h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.03em; }
+.prog-name p { margin-top: 6px; font-family: var(--font-en); font-size: 13px; font-weight: 500; color: var(--primary); }
+.prog-body > p { font-size: 16px; line-height: 1.85; color: var(--text); }
+.prog-body dl { display: grid; grid-template-columns: 84px 1fr; gap: 10px 16px; margin-top: 18px; font-size: 15px; line-height: 1.65; }
+.prog-body dt { font-weight: 700; color: var(--ink); }
+.prog-body dd { color: var(--muted); }
+.prog-body .text-link { margin-top: 18px; }
+.prog-contact { padding: 72px 0; background: var(--ink); color: rgba(255,255,255,.75); text-align: center; }
+.prog-contact p { font-size: 16px; }
+.prog-contact-info { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px; font-size: 20px; font-weight: 700; color: #fff; }
+.prog-contact-info a:hover { color: var(--primary-light); }
+
 /* =========================================================
    태블릿 / 모바일
    ========================================================= */
@@ -491,8 +498,6 @@ a:hover .thumb img { transform: scale(1.06); }
   .quick { margin-top: -36px; }
   .intro-grid { grid-template-columns: 1fr; gap: 48px; }
   .intro-photos { padding: 0 0 48px 40px; }
-  .programs-grid { grid-template-columns: 1fr; gap: 40px; }
-  .programs-photo img { aspect-ratio: 16 / 10; }
 
   .section { padding-block: 72px; }
   .quick-list { grid-template-columns: repeat(3, 1fr); }
@@ -509,6 +514,8 @@ a:hover .thumb img { transform: scale(1.06); }
   .sub-tabs a::after { left: 16px; right: 16px; }
   .greeting-grid { grid-template-columns: 1fr; gap: 32px; }
   .about-row { grid-template-columns: 1fr; gap: 28px; }
+  .prog { grid-template-columns: 1fr; gap: 14px; padding: 28px 0; }
+  .prog-photo img { aspect-ratio: 16 / 9; }
   .album-grid { grid-template-columns: repeat(3, 1fr); }
   .gallery-page { padding-top: 48px; }
   .album + .album { margin-top: 64px; }
@@ -529,16 +536,15 @@ a:hover .thumb img { transform: scale(1.06); }
   .intro-facts dt { flex-shrink: 0; width: 92px; font-size: 22px; }
   .intro-facts dd { margin-top: 0; }
   .intro-facts br, .intro-motto br { display: none; }
-  .program-list a { padding: 20px 32px 20px 40px; }
-  .program-list a::before { top: 22px; }
-  .program-list h3 { font-size: 17px; }
-  .program-list p { font-size: 14px; }
   .footer-info i { display: block; width: 0; height: 0; margin: 0; }
   .lead br { display: none; }
   .greeting-body p { font-size: 16px; }
   .greeting-quote br { display: none; }
   .purpose-list li { gap: 16px; font-size: 17px; padding: 20px 2px; }
   .album-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .prog-body dl { grid-template-columns: 1fr; gap: 2px; }
+  .prog-body dd + dt { margin-top: 10px; }
+  .prog-name h3 { font-size: 20px; }
   .album-head h3 { font-size: 20px; }
   .year-group + .year-group { margin-top: 80px; }
   .year-nav { margin-bottom: 40px; }

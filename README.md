@@ -8,7 +8,8 @@ HTML / CSS / JavaScript로 만든 정적 홈페이지입니다. 별도 설치 �
 ```
 index.html          메인 페이지 (메뉴, 슬라이드)
 about.html          소개 페이지 (인사말, GMI 목적, GMI 활동, 오시는 길)
-gallery.html        포토갤러리 (행사별 앨범, 사진 크게 보기)
+gallery.html        포토갤러리 (연도별 앨범, 사진 크게 보기)
+programs.html       프로그램 소개 (사명 발견 / 선교 훈련 / 선교 현장 / 국제학생)
 images/gallery/     포토갤러리 사진 (앨범별 폴더, 01.jpg 큰 사진 / 01_t.jpg 작은 사진)
 css/style.css       디자인 (색상은 맨 위 :root 에서 변경)
 js/main.js          메뉴 동작, 슬라이드 자동 전환
@@ -42,6 +43,7 @@ git clone https://github.com/gyumin0847/GMI_HomePage.git
 |---|---|---|
 | 메뉴 이름, 슬라이드 문구, 기관 이름 | `index.html` | 한글 문구를 찾아서 바로 수정 |
 | 인사말, 목적, 활동, 연락처 | `about.html` | 한글 문구를 찾아서 바로 수정 |
+| 프로그램 추가·수정 | `programs.html` | 해당 분야의 `<article class="prog">` 블록 복사 |
 | 포토갤러리 사진·앨범 추가 | `gallery.html` + `images/gallery/` | 파일 안 설명(주석)대로 `<li>` 한 줄 또는 `<section class="album">` 블록 복사 |
 | 전체 색상, 글꼴 | `css/style.css` | 맨 위 `:root { ... }` |
 | 슬라이드 넘어가는 시간 | `js/main.js` | 맨 위 `SLIDE_INTERVAL` (5000 = 5초) |
